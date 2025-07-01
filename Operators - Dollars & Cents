@@ -1,0 +1,16 @@
+import java.util.Scanner;
+public class CurrencyAdder {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int d1 = sc.nextInt();
+        int c1 = sc.nextInt();
+        int d2 = sc.nextInt();
+        int c2 = sc.nextInt();
+        int totalCents = c1 + c2;
+        int extraDollars = totalCents / 100;
+        int finalCents = totalCents % 100;
+        int finalDollars = d1 + d2 + extraDollars;
+        System.out.println(finalDollars);
+        System.out.println(finalCents);
+    }
+}
