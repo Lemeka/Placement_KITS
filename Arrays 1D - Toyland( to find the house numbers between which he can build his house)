@@ -1,0 +1,51 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); 
+
+        int[] houseNums = new int[n];
+        int[] positions = new int[n];
+        for (int i = 0; i < n; i++)
+        {
+            houseNums[i] = sc.nextInt();
+            positions[i] = sc.nextInt();
+        }
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = i + 1; j < n; j++) 
+            {
+                if (positions[i] > positions[j]) 
+                {
+                    int tempPos = positions[i];
+                    positions[i] = positions[j];
+                    positions[j] = tempPos;
+                    
+                    int tempNum = houseNums[i];
+                    houseNums[i] = houseNums[j];
+                    houseNums[j] = tempNum;
+                }
+            }
+        }
+        int mG = 0;
+        int house1 = 0, house2 = 0;
+        for (int i = 1; i < n; i++) {
+            int gap = positions[i] - positions[i - 1];
+            if (gap > mG) 
+            {
+                mG = gap;
+                house1 = houseNums[i - 1];
+                house2 = houseNums[i];
+            }
+        }
+        if (house1 < house2)
+        {
+            System.out.println(house1 + " " + house2);
+        } else
+        {
+            System.out.println(house2 + " " + house1);
+        }
+    }
+}
