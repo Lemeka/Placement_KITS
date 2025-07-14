@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class StackSimple {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt(); 
+        int[] stack = new int[10000];
+        int top = -1;
+
+        sc.nextLine(); 
+
+        for (int i = 0; i < T; i++) {
+            String s = sc.nextLine();
+            if (s.startsWith("push")) {
+                int x = Integer.parseInt(s.split(" ")[1]);
+                top++;
+                stack[top] = x;
+            } else if (s.equals("pop")) {
+                if (top == -1) {
+                    System.out.println("Empty");
+                } else {
+                    System.out.println(stack[top]);
+                    top--;
+                }
+            }
+        }
+        sc.close();
+    }
+}
